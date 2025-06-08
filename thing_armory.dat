@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="armNatural" name="Natural Armor" description="Description goes here" compset="Armor" uniqueness="unique" holdable="no">
+    <fieldval field="defAR" value="1"/>
+    <tag group="Equipment" tag="Natural"/>
+    <tag group="Equipment" tag="AutoEquip"/>
+    </thing>
+  <thing id="shdShieldWood" name="Wooden Shield" description="Description goes here" compset="Shield">
+    <fieldval field="defEncValue" value="3"/>
+    <fieldval field="defSpecial" value="* +1 to Physical Defense{br}* Requiresthe user to have one hand free to hold it."/>
+    <bootstrap thing="wpShield"></bootstrap>
+    <eval phase="PreTraits" priority="2500">doneif (field[grIsEquip].value = 0)
+
+#traitbonus[trPhysDefense] += 1</eval>
+    </thing>
+  <thing id="wpUnarmed" name="Unarmed" description="Punch, Kick, Headbutt" compset="Weapon" uniqueness="unique" holdable="no">
+    <fieldval field="shortname" value="Unarmed"/>
+    <fieldval field="wpDamage" value="2"/>
+    <fieldval field="wpSpecial" value="Does not count as a Melee Weapon for the purpose of any bonuses that apply to Attacks with Melee Weapons."/>
+    <tag group="WeaponType" tag="Unarmed"/>
+    <tag group="Equipment" tag="Natural"/>
+    <tag group="RangeCat" tag="0"/>
+    <tag group="RangeArea" tag="0"/>
+    </thing>
+  <thing id="wpSampleM" name="Sample Melee" description="Description goes here" compset="Weapon">
+    <fieldval field="wpDamage" value="1d3"/>
+    <fieldval field="grCost" value="5"/>
+    <fieldval field="gearWeight" value="1"/>
+    <tag group="WeaponType" tag="Melee"/>
+    </thing>
+  <thing id="wpSampleR" name="Sample Ranged" description="Description goes here" compset="Weapon">
+    <fieldval field="shortname" value=""/>
+    <fieldval field="wpBonus" value="0"/>
+    <fieldval field="wpDamage" value="2d6"/>
+    <fieldval field="wpStrReq" value="5"/>
+    <fieldval field="wpSpecial" value=""/>
+    <fieldval field="grCost" value="200"/>
+    <fieldval field="gearWeight" value="4"/>
+    </thing>
+  <thing id="wpDagger" name="Dagger" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    <bootstrap thing="wpDaggerThrown"></bootstrap>
+    </thing>
+  <thing id="wpHandAxe" name="Hand Axe" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="3"/>
+    <tag group="RangeCat" tag="0"/>
+    <tag group="WeaponWeight" tag="Medium"/>
+    </thing>
+  <thing id="wpWarhammer" name="Warhammer" compset="Weapon">
+    <fieldval field="wpSpecial" value="Enemy AR is considered to be 2 lower against Attacks from this weapon."/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="3"/>
+    <tag group="RangeCat" tag="0"/>
+    <tag group="WeaponWeight" tag="Heavy"/>
+    <tag group="WeaponType" tag="Melee"/>
+    </thing>
+  <thing id="wpBroadsword" name="Broadsword" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="4"/>
+    <tag group="RangeCat" tag="0"/>
+    <tag group="WeaponWeight" tag="Heavy"/>
+    </thing>
+  <thing id="wpWarSpear" name="War Spear" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="5"/>
+    <tag group="RangeCat" tag="1"/>
+    <tag group="GearHand" tag="TwoHanded"/>
+    <tag group="WeaponWeight" tag="Medium"/>
+    </thing>
+  <thing id="wpGreatAxe" name="Great Axe" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="6"/>
+    <tag group="RangeCat" tag="0"/>
+    <tag group="GearHand" tag="TwoHanded"/>
+    <tag group="WeaponWeight" tag="Heavy"/>
+    </thing>
+  <thing id="wpDaggerThrown" name="Dagger (Thrown)" compset="Weapon">
+    <tag group="WeaponType" tag="Thrown"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="RangeCat" tag="2"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="Hide" tag="Equipment"/>
+    <tag group="RangeArea" tag="3"/>
+    </thing>
+  <thing id="wpHuntingSpear" name="Hunting Spear" compset="Weapon">
+    <tag group="WeaponType" tag="Thrown"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="RangeCat" tag="2"/>
+    <tag group="WeaponDie" tag="3"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponWeight" tag="Medium"/>
+    <tag group="RangeArea" tag="3"/>
+    </thing>
+  <thing id="wpSling" name="Sling" compset="Weapon">
+    <fieldval field="wpSpecial" value="Apply a -1 Modifier to the Attack. A Sling may be used One-Handed."/>
+    <fieldval field="wpPenalty" value="-1"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="2"/>
+    <tag group="RangeArea" tag="3"/>
+    <tag group="WeaponType" tag="Ranged"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    </thing>
+  <thing id="armBreastplate" name="Breastplate" compset="Armor">
+    <fieldval field="defAR" value="5"/>
+    <fieldval field="defEncValue" value="3"/>
+    <fieldval field="defSpecial" value="* -2 to all Sorcery Attacks.{br}* -2 to all Checks while attempting to Move stealthily.{br}* May never take more than 2 Move Actions in a Turn, regardless of Skills, StaminaPoints, or any oher rules.."/>
+    <tag group="ArmorType" tag="Medium"/>
+    </thing>
+  <thing id="armHide" name="Hide" compset="Armor">
+    <fieldval field="defAR" value="3"/>
+    <fieldval field="defEncValue" value="1"/>
+    <fieldval field="defSpecial" value="* -1 to all Sorcery Attacks{br}* -1 to all Checks while attempting to Move stealthily"/>
+    <tag group="ArmorType" tag="Light"/>
+    </thing>
+  <thing id="armLeather" name="Leather" compset="Armor">
+    <fieldval field="defAR" value="3"/>
+    <fieldval field="defEncValue" value="1"/>
+    <fieldval field="defSpecial" value="* -1 to all Sorcery Attacks{br}* -1 to all Checks while attempting to Move stealthily"/>
+    <tag group="ArmorType" tag="Light"/>
+    </thing>
+  <thing id="armBone" name="Bone" compset="Armor">
+    <fieldval field="defAR" value="3"/>
+    <fieldval field="defEncValue" value="1"/>
+    <fieldval field="defSpecial" value="* -1 to all Sorcery Attacks{br}* -1 to all Checks while attempting to Move stealthily"/>
+    <tag group="ArmorType" tag="Light"/>
+    </thing>
+  <thing id="armCuirass" name="Cuirass" compset="Armor">
+    <fieldval field="defAR" value="5"/>
+    <fieldval field="defEncValue" value="3"/>
+    <fieldval field="defSpecial" value="* -2 to all Sorcery Attacks.{br}* -2 to all Checks while attempting to Move stealthily.{br}* May never take more than 2 Move Actions in a Turn, regardless of Skills, StaminaPoints, or any oher rules.."/>
+    <tag group="ArmorType" tag="Medium"/>
+    </thing>
+  <thing id="armHauberk" name="Hauberk" compset="Armor">
+    <fieldval field="defAR" value="5"/>
+    <fieldval field="defEncValue" value="3"/>
+    <fieldval field="defSpecial" value="* -2 to all Sorcery Attacks.{br}* -2 to all Checks while attempting to Move stealthily.{br}* May never take more than 2 Move Actions in a Turn, regardless of Skills, StaminaPoints, or any oher rules.."/>
+    <tag group="ArmorType" tag="Medium"/>
+    </thing>
+  <thing id="armFullPlate" name="Full Plate" compset="Armor">
+    <fieldval field="defAR" value="8"/>
+    <fieldval field="defEncValue" value="5"/>
+    <fieldval field="defSpecial" value="* -3 to all Sorcery Attacks.{br}* -3 to all Checks while attempting to Move stealthily.{br}* May never take more than 1 Move Actions in a Turn, regardless of Skills, StaminaPoints, or any oher rules (a Mounted Character may still move according to the rules of Mounted Characters).{br}* May only take one Recovery during any game session where Heavy Armor has been worn for one or more combat encounters."/>
+    <tag group="ArmorType" tag="Medium"/>
+    </thing>
+  <thing id="armKnightArmor" name="Knight&apos;s Armor" compset="Armor">
+    <fieldval field="defAR" value="8"/>
+    <fieldval field="defEncValue" value="5"/>
+    <fieldval field="defSpecial" value="* -3 to all Sorcery Attacks.{br}* -3 to all Checks while attempting to Move stealthily.{br}* May never take more than 1 Move Actions in a Turn, regardless of Skills, StaminaPoints, or any oher rules (a Mounted Character may still move according to the rules of Mounted Characters).{br}* May only take one Recovery during any game session where Heavy Armor has been worn for one or more combat encounters."/>
+    <tag group="ArmorType" tag="Medium"/>
+    </thing>
+  <thing id="shdShieldMetal" name="Metal Shield" description="Description goes here" compset="Shield">
+    <fieldval field="defEncValue" value="3"/>
+    <fieldval field="defSpecial" value="* +1 to Physical Defense{br}* Requiresthe user to have one hand free to hold it."/>
+    <bootstrap thing="wpShield"></bootstrap>
+    <eval phase="PreTraits" priority="2500">doneif (field[grIsEquip].value = 0)
+
+#traitbonus[trPhysDefense] += 1</eval>
+    </thing>
+  <thing id="shdShieldMakeshft" name="Makeshift Shield" description="Description goes here" compset="Shield">
+    <fieldval field="defEncValue" value="3"/>
+    <fieldval field="defSpecial" value="* +1 to Physical Defense{br}* Requiresthe user to have one hand free to hold it."/>
+    <bootstrap thing="wpShield"></bootstrap>
+    <eval phase="PreTraits" priority="2500">doneif (field[grIsEquip].value = 0)
+
+#traitbonus[trPhysDefense] += 1</eval>
+    </thing>
+  <thing id="wpClub" name="Club" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  <thing id="wpKnife" name="Knife" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  <thing id="wpStiletto" name="Stiletto" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  <thing id="wpPoniard" name="Poniard" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  <thing id="wpRapier" name="Rapier" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  <thing id="wpStaff" name="Staff" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  <thing id="wpWhip" name="Whip" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  <thing id="wpShield" name="Shield" compset="Weapon">
+    <tag group="WeaponType" tag="Melee"/>
+    <tag group="GearHand" tag="OneHanded"/>
+    <tag group="WeaponWeight" tag="Light"/>
+    <tag group="Hide" tag="Equipment"/>
+    <tag group="NumDice" tag="1"/>
+    <tag group="WeaponDie" tag="2"/>
+    <tag group="RangeCat" tag="0"/>
+    </thing>
+  </document>

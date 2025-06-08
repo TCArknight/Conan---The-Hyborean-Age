@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains the definition of the first page of the standard character
+      sheet for output. The character sheet has been carved into a simple two-column
+      presentation that is used by many game systems, with some information on the
+      left and other material on the right. You can use whatever overall layout you
+      prefer, using this sample as a guideline.
+
+      A variety of display techniques have been used on this one character sheet to
+      provide examples of how to present information in different ways. You will
+      likely choose one or two of these methods and use them exclusively within your
+      own data files, but this gives you various styles to choose from.
+
+      The second page of the character sheet will be found in "sheet_standard2.dat".
+-->
+
+<document signature="Hero Lab Data">
+
+	
+    <portal
+      id="oExpTitleHdr"
+      style="outTitleLg">
+      <output_label>
+	    <labeltext><![CDATA[
+          @text = "XP"
+          ]]></labeltext>
+        </output_label>
+      </portal>	
+	  
+    <portal
+      id="oExpValue"
+      style="outNormalGiantBrd">
+      <output_label>
+	    <labeltext><![CDATA[
+          @text = "{vert 75}" & #resmax[resXP]
+		  ]]></labeltext>
+        </output_label>
+      </portal>	
+	  
+    <portal
+      id="oFlexDieHdr"
+      style="outTitleLg">
+      <output_label>
+	    <labeltext><![CDATA[
+          @text = "FLEX DIE"
+          ]]></labeltext>
+        </output_label>
+      </portal>	
+	  
+    <portal
+      id="oFlexValue"
+      style="outLargeBorder">
+      <output_label>
+	    <labeltext><![CDATA[
+          @text = "{vert 75}" & #flexdiesheet[]
+		  ]]></labeltext>
+        </output_label>
+      </portal>	
+
+    <portal
+      id="oStaminaHdr"
+      style="outTitleLg">
+      <output_label>
+	    <labeltext><![CDATA[
+          @text = "Stamina Points"
+          ]]></labeltext>
+        </output_label>
+      </portal>	
+	  
+    <portal
+      id="oStaminaValue"
+      style="outNormalGiantBrd">
+      <output_label>
+	    <labeltext><![CDATA[
+          @text = "{vert 75}" & #trait[trStamina]
+		  ]]></labeltext>
+        </output_label>
+      </portal>		  
+
+  <!-- 
+        headertemplate="oAttrWidePick"
+  -->
+    <portal
+      id="oAttributeWide"
+      style="outNormal">
+      <output_table
+        component="Attribute"
+        showtemplate="oAttrWidePick"
+        showsortset="explicit"
+	    columns="4">
+      </output_table>
+    </portal>
+	
+    <portal
+      id="oDefenseWide"
+      style="outNormal">
+      <output_table
+        component="Trait"
+        showtemplate="oDefWidePick"
+        showsortset="explicit"
+	    columns="2">
+      <list>User.Defense</list>
+      <headertitle>
+        @text = "DEFENSE"
+        </headertitle>
+      </output_table>
+    </portal>
+	
+    <portal
+      id="oOriginAbility"
+      style="outNormalBrd">
+      <output_table
+        component="OriginAbility"
+        showtemplate="oOriginAbilPick"
+        showsortset="explicit">
+      <headertitle>
+        @text = "Origin Bonuses"
+        </headertitle>
+      </output_table>
+    </portal>
+	
+    <portal
+      id="oSkillsCAH"
+      style="outTblGrid">
+      <output_table
+        component="Skill"
+        showtemplate="oSkillPickCAH"
+        showsortset="explicit"
+		varyheight="yes">
+		<list>!SkillCat.Sorcery</list>
+      <headertitle>
+        @text = "SKILLS"
+        </headertitle>
+      </output_table>
+    </portal>
+	
+    <portal
+      id="oSkillsSorcCAH"
+      style="outTblGrid">
+      <output_table
+        component="Skill"
+        showtemplate="oSkillPickCAH"
+        showsortset="SorcerySkills"
+		varyheight="yes">
+		<list>SkillCat.Sorcery</list>
+      <headertitle>
+        @text = "SORCERY SKILLS"
+        </headertitle>
+      </output_table>
+    </portal>
+	
+    <portal
+      id="oWeaponsCAH"
+      style="outNormal">
+      <output_table
+        component="WeaponBase"
+        showtemplate="oWeaponPickCAH"
+        showsortset="explicit"
+		varyheight="yes">
+      <headertitle>
+        @text = "WEAPONS"
+        </headertitle>
+      </output_table>
+    </portal>
+	
+    <portal
+      id="oArmorCAH"
+      style="outNormal">
+      <output_table
+        component="Defense"
+        showtemplate="oArmorPickCAH"
+        showsortset="explicit"
+		varyheight="yes">
+      <headertitle>
+        @text = "ARMOR"
+        </headertitle>
+      </output_table>
+    </portal>
+	
+  <template
+    id="oAttrWidePickOld"
+    name="Output Wide Attributes Table"
+    compset="Attribute"
+    marginvert="5"
+	marginhorz="5">
+
+    <portal
+      id="name"
+      style="outNameLg">
+      <output_label
+        field="name">
+        </output_label>
+      </portal>
+
+    <portal
+      id="rating"
+      style="outValBox">
+      <output_label
+        field="trtFinal">
+        </output_label>
+      </portal>
+
+    <portal
+      id="basedie"
+      style="outValBox">
+      <output_label
+        field="trtDisplayDieText">
+        </output_label>
+      </portal>
+
+    <!-- Portals used as the header -->
+    <portal
+      id="hdrtitle"
+      style="outTitle"
+      isheader="yes">
+      <output_label>
+	    <labeltext><![CDATA[
+          @text = "Attributes"
+          ]]></labeltext>
+        </output_label>
+      </portal>
+
+    <portal
+      id="hdrrating"
+      style="outHeader"
+      isheader="yes">
+      <output_label
+        text="Rating">
+        </output_label>
+      </portal>
+
+    <portal
+      id="hdrbasedie"
+      style="outHeader"
+      isheader="yes">
+      <output_label
+        text="Die">
+        </output_label>
+      </portal>
+
+    <portal
+      id="hdrrating2"
+      style="outHeader"
+      isheader="yes">
+      <output_label
+        text="Rating">
+        </output_label>
+      </portal>
+
+    <portal
+      id="hdrbasedie2"
+      style="outHeader"
+      isheader="yes">
+      <output_label
+        text="Die">
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+      ~our height is driven by the tallest portal (they're all the same)
+      height = portal[name].height
+      doneif (issizing <> 0)
+
+      ~setup appropriate widths for the various value portals
+      portal[rating].width = 110
+      portal[basedie].width = 110
+
+      ~center everything vertically within the template
+      perform portal[name].centervert
+      perform portal[rating].centervert
+      perform portal[basedie].centervert
+
+      ~position everything horizontally, indenting 0 pixels on each side
+      portal[name].left = 0
+      perform portal[basedie].alignedge[right,0]
+      perform portal[rating].alignrel[rtol,basedie,-20]
+      ]]></position>
+
+    <header><![CDATA[
+      ~our header height is the title plus a gap plus the header text
+      height = portal[hdrtitle].height + 10 + portal[hdrrating].height
+      doneif (issizing <> 0)
+
+      ~our title spans the full width of the template
+      portal[hdrtitle].width = width
+
+      ~each of our header labels has the same width as the corresponding data beneath
+      portal[hdrbasedie].width = portal[basedie].width
+      portal[hdrrating].width = portal[rating].width
+
+      ~center each header label on the corresponding data beneath
+      perform portal[hdrbasedie].centeron[horz,basedie]
+      perform portal[hdrrating].centeron[horz,rating]
+
+      ~align all header labels at the bottom of the header region
+      perform portal[hdrbasedie].alignedge[bottom,0]
+      perform portal[hdrrating].alignedge[bottom,0]
+      ]]></header>
+
+    </template>	
+	
+  <template
+    id="oAttrWidePick"
+    name="Output Wide Attributes Table"
+    compset="Attribute"
+    marginvert="5"
+	marginhorz="5">
+
+    <portal
+      id="name"
+      style="outTitle">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = uppercase(field[name].text)
+		  ]]></labeltext>
+        </output_label>
+      </portal>
+	
+    <portal
+      id="hdrvalue"
+      style="outHeaderBox">
+      <output_label
+        text="Value">
+        </output_label>
+      </portal>  
+	
+    <portal
+      id="hdrdie"
+      style="outHeaderBox">
+      <output_label
+        text="Die">
+        </output_label>
+      </portal>  
+
+    <portal
+      id="value"
+      style="outValBoxXL">
+      <output_label
+        field="trtFinal">
+        </output_label>
+      </portal>
+
+    <portal
+      id="basedie"
+      style="outValBoxXL">
+      <output_label
+        field="trtDisplayDieText">
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+      ~our height is driven by the tallest portal (they're all the same)
+      height = portal[name].height + portal[hdrdie].height + portal[value].height
+      doneif (issizing <> 0)
+
+      ~setup appropriate widths for the various value portals
+      portal[name].width = 400
+      portal[hdrvalue].width = portal[name].width / 2
+      portal[hdrdie].width = portal[hdrvalue].width
+	  portal[value].width = portal[hdrvalue].width
+	  portal[basedie].width = portal[hdrvalue].width
+
+      ~center everything vertically within the template
+      ~perform portal[name].centervert
+      ~perform portal[rating].centervert
+      ~perform portal[basedie].centervert
+
+      ~position everything horizontally, indenting 0 pixels on each side
+      portal[name].left = 0
+	  portal[name].top = 0
+	  
+	  portal[hdrvalue].top = portal[name].bottom
+	  portal[hdrvalue].left = portal[name].left
+	  
+	  portal[hdrdie].top = portal[hdrvalue].top
+	  portal[hdrdie].left = portal[hdrvalue].right
+	  
+	  portal[value].top = portal[hdrvalue].bottom
+	  portal[value].left = portal[hdrvalue].left
+	  
+	  portal[basedie].top = portal[value].top
+	  portal[basedie].left = portal[value].right
+	  
+	  ~ perform portal[basedie].alignedge[right,0]
+      ~ perform portal[rating].alignrel[rtol,basedie,-20]
+      ]]></position>
+
+
+    </template>		
+	
+  <template
+    id="oDefWidePick"
+    name="Output Wide Defense Table"
+    compset="Trait"
+	>
+	
+    <portal
+      id="hdrname"
+      style="outHeaderBox">
+      <output_label
+        field="trtShortname">
+        </output_label>
+      </portal>  
+
+    <portal
+      id="value"
+      style="outValBoxXL">
+      <output_label
+        field="trtFinal">
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+      ~our height is driven by the tallest portal (they're all the same)
+      height = portal[hdrname].height + portal[value].height
+      doneif (issizing <> 0)
+
+      ~setup appropriate widths for the various value portals
+      portal[hdrname].width = width
+	  portal[value].width = portal[hdrname].width
+
+      ~position everything horizontally, indenting 0 pixels on each side
+      portal[hdrname].left = 0
+	  portal[hdrname].top = 0
+	  	  
+	  portal[value].top = portal[hdrname].bottom
+	  portal[value].left = portal[hdrname].left
+	  
+      ]]></position>
+
+
+    </template>	
+	
+  <template
+    id="oOriginAbilPick"
+    name="Output Origin Ability Table"
+    compset="OriginAbility"
+    marginvert="5">
+
+    <portal
+      id="desc"
+      style="outNormal">
+      <output_label
+	    field="descript"
+		ismultiline="yes">
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+
+      ~setup appropriate widths for the various value portals
+      portal[desc].width = width
+      portal[desc].left = 0
+	  portal[desc].top = 0
+	  
+	  height = portal[desc].bottom
+	  
+      ]]></position>
+
+
+    </template>	
+	
+  <template
+    id="oLifePoints"
+    name="Output Life Points"
+	compset="Damage"
+	>
+	
+    <portal
+      id="hdrname"
+      style="outTitleBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}LIFE POINTS{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+
+    <portal
+      id="curhdr"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "Actual"
+		  ]]></labeltext>
+        </output_label>
+      </portal> 
+	  
+    <portal
+      id="maxhdr"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "Max"
+		  ]]></labeltext>
+        </output_label>
+      </portal> 
+	  
+    <portal
+      id="curvalue"
+      style="outValBoxXL">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = herofield[acLPNow].text
+          ]]></labeltext>
+        </output_label>
+      </portal>
+
+    <portal
+      id="maxvalue"
+      style="outValBoxXL">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = herofield[acLPMax].text
+          ]]></labeltext>
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+      ~setup appropriate widths for the various value portals
+      portal[hdrname].width = width
+	  portal[curhdr].width = portal[hdrname].width / 2
+	  portal[maxhdr].width = portal[hdrname].width / 2
+	  portal[curvalue].width = portal[curhdr].width
+	  portal[maxvalue].width = portal[maxhdr].width
+	  
+      ~position everything horizontally, indenting 0 pixels on each side
+      portal[hdrname].left = 0
+	  portal[hdrname].top = 0
+	  
+	  portal[curhdr].top = portal[hdrname].bottom
+	  portal[curhdr].left = portal[hdrname].left
+	  portal[maxhdr].top = portal[curhdr].top
+	  portal[maxhdr].left = portal[curhdr].right
+	  	  
+	  portal[curvalue].top = portal[curhdr].bottom
+	  portal[curvalue].left = portal[hdrname].left
+	  portal[maxvalue].top = portal[maxhdr].bottom
+	  portal[maxvalue].left = portal[curvalue].right
+	 
+      height = portal[curvalue].bottom
+      ]]></position>
+
+    </template>	
+		
+
+  <template
+    id="oSkillPickCAH"
+    name="Output Skill Pick"
+    compset="Skill"
+    marginvert="2">
+
+    <portal
+      id="name"
+      style="outNormalLeft">
+      <output_label
+	    field="name">
+        </output_label>
+      </portal>
+
+    <portal
+      id="desc"
+      style="outNormalLeft">
+      <output_label
+	    field="summary"
+		ismultiline="yes">
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+	  ~ name on the left, multiline desc on right
+	  
+      ~ setup appropriate widths for the various value portals
+	  portal[name].width = width / 3
+      portal[desc].width = width - portal[name].right + 5
+	  
+      portal[name].left = 0
+	  portal[name].top = 0
+	  
+	  portal[desc].left = portal[name].right + 5
+	  portal[desc].top = portal[name].top
+	  
+      perform portal[desc].autoheight
+
+      ~our height is the vertical extent of our portal
+      height = portal[desc].textheight
+	
+      ]]></position>
+
+
+    </template>
+		
+
+  <template
+    id="oWeaponPickCAH"
+    name="Output Weapon Pick"
+    compset="Skill"
+    marginvert="10">
+
+    <portal
+      id="hdrname"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}Weapon{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+	  
+
+    <portal
+      id="hdrtype"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}Type{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+
+    <portal
+      id="hdrrange"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}Range{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+	  
+
+    <portal
+      id="hdrdamage"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}Damage{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+	  
+    <portal
+      id="name"
+      style="outNormalLeftBrd">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = field[name].text
+          ]]></labeltext>
+        </output_label>
+      </portal>
+
+    <portal
+      id="type"
+      style="outNormalBrd">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = tagnames[WeaponType.?," | "]
+          ]]></labeltext>
+        </output_label>
+      </portal>
+	  
+    <portal
+      id="range"
+      style="outNormalBrd">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = tagnames[RangeCat.?," | "]
+          ]]></labeltext>
+        </output_label>
+      </portal>
+
+    <portal
+      id="damage"
+      style="outNormalBrd">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = field[wpDamageDisplay].text
+          ]]></labeltext>
+        </output_label>
+      </portal>
+	  
+    <portal
+      id="rules"
+      style="outGreyedNotesBx">
+      <output_label
+	   ismultiline="yes">
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = "Rules: {br}{indent 20}" & field[wpNotes].text
+          ]]></labeltext>
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+	  ~ name on the left, multiline desc on right
+	  
+      ~ setup appropriate widths for the various value portals
+	  portal[hdrname].width = width / 2
+      portal[hdrtype].width = width / 2
+	  portal[name].width = width / 2
+      portal[type].width = width / 2
+	  portal[hdrrange].width = width / 2
+      portal[hdrdamage].width = width / 2
+	  portal[range].width = width / 2
+      portal[damage].width = width / 2
+      portal[rules].width = width
+	  
+      portal[hdrname].left = 0
+	  portal[hdrname].top = 0
+      portal[name].left = portal[hdrname].left
+	  portal[name].top = portal[hdrname].bottom
+	  
+	  portal[hdrtype].left = portal[hdrname].right
+	  portal[hdrtype].top = portal[hdrname].top
+      portal[type].left = portal[hdrtype].left
+	  portal[type].top = portal[hdrtype].bottom
+	  
+      portal[hdrrange].left = 0
+	  portal[hdrrange].top = portal[name].bottom
+      portal[range].left = portal[hdrrange].left
+	  portal[range].top = portal[hdrrange].bottom
+	  
+	  portal[hdrdamage].left = portal[hdrrange].right
+	  portal[hdrdamage].top = portal[hdrrange].top
+      portal[damage].left = portal[hdrdamage].left
+	  portal[damage].top = portal[hdrdamage].bottom
+	  
+      portal[rules].left = 0
+	  portal[rules].top = portal[range].bottom
+      perform portal[rules].autoheight
+
+      ~our height is the vertical extent of our portal
+      height = portal[rules].bottom
+	
+      ]]></position>
+
+
+    </template>
+
+  <template
+    id="oArmorPickCAH"
+    name="Output Armor Pick"
+    compset="Skill"
+    marginvert="10">	  
+
+    <portal
+      id="hdrtype"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}Type{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+
+    <portal
+      id="hdrrating"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}AR{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+	  
+    <portal
+      id="hdrenc"
+      style="outHeaderBox">
+      <output_label>
+	    <labeltext><![CDATA[
+		  @text = "{b}EN{/b}"
+		  ]]></labeltext>
+        </output_label>
+      </portal>  
+
+    <portal
+      id="type"
+      style="outNormalLeftBrd">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = field[name].text & " (" & tagnames[ArmorType.?," | "] & ")"
+          ]]></labeltext>
+        </output_label>
+      </portal>
+	  
+    <portal
+      id="rating"
+      style="outNormalBrd">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = field[name].text
+          ]]></labeltext>
+        </output_label>
+      </portal>
+
+    <portal
+      id="enc"
+      style="outNormalBrd">
+      <output_label>
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = tagnames[WeaponType.?," | "]
+          ]]></labeltext>
+        </output_label>
+      </portal>
+	  
+    <portal
+      id="rules"
+      style="outGreyedNotesBx">
+      <output_label
+	   ismultiline="yes">
+        <labeltext><![CDATA[
+          ~show the current health; if the character is incurring any extra penalties
+          ~due to excessive damage, append them
+          @text = "Rules: {br}{indent 20}" & field[defNotes].text
+          ]]></labeltext>
+        </output_label>
+      </portal>
+	  
+    <position><![CDATA[
+	  ~ name on the left, multiline desc on right
+	  
+      ~ setup appropriate widths for the various value portals
+      portal[hdrtype].width = width / 2
+	  portal[hdrrating].width = width / 4
+      portal[hdrenc].width = width / 4
+	  
+      portal[type].width = width / 2
+	  portal[rating].width = width / 4
+      portal[enc].width = width / 4
+      portal[rules].width = width
+	  	  
+	  portal[hdrtype].left = 0
+	  portal[hdrtype].top = 0
+      portal[type].left = portal[hdrtype].left
+	  portal[type].top = portal[hdrtype].bottom
+	  
+      portal[hdrrating].left = portal[hdrtype].right
+	  portal[hdrrating].top = portal[hdrtype].top
+      portal[rating].left = portal[hdrrating].left
+	  portal[rating].top = portal[hdrrating].bottom
+	  
+	  portal[hdrenc].left = portal[hdrrating].right
+	  portal[hdrenc].top = portal[hdrrating].top
+      portal[enc].left = portal[hdrenc].left
+	  portal[enc].top = portal[hdrenc].bottom
+	  
+      portal[rules].left = 0
+	  portal[rules].top = portal[rating].bottom
+      perform portal[rules].autoheight
+
+      ~our height is the vertical extent of our portal
+      height = portal[rules].bottom
+	
+      ]]></position>
+
+
+    </template>
+
+  <!-- oTop layout
+        This layout is rendered across the top of the sheet and contains the
+        name and description details for the character, as well as the table of
+        table of attributes, table of health/powers, and table of derived traits.
+		
+    <portalref portal="oAttribute"/>
+    <portalref portal="oPower"/>
+    <portalref portal="oDerived"/>
+	
+	
+      ~position the tables next
+      perform portal[oAttribute].autoplace
+      perform portal[oPower].autoplace
+      perform portal[oDerived].autoplace
+    <portalref portal="oHeroName"/>
+    <portalref portal="oHeroInfo"/>
+  -->
+  <layout
+    id="oTop">
+    <portalref portal="oExpTitleHdr"/>
+    <portalref portal="oExpValue"/>
+    <portalref portal="oHeroName"/>
+    <portalref portal="oHeroInfo"/>
+    <portalref portal="oFlexDieHdr"/>
+    <portalref portal="oFlexValue"/>
+    <portalref portal="oStaminaHdr"/>
+    <portalref portal="oStaminaValue"/>
+    <position><![CDATA[
+	  
+	  var colwidth as number
+	  colwidth = width / 5
+	  
+      portal[oExpTitleHdr].top = 0
+      portal[oExpTitleHdr].left = 0
+      portal[oExpTitleHdr].width = colwidth
+	  portal[oExpTitleHdr].height = 55
+	  
+      portal[oExpValue].top = portal[oExpTitleHdr].bottom
+      portal[oExpValue].left = portal[oExpTitleHdr].left
+      portal[oExpValue].width = portal[oExpTitleHdr].width
+	  portal[oExpValue].height = 305
+	  
+      portal[oHeroName].top = 0
+      portal[oHeroName].left = portal[oExpTitleHdr].right + 20
+      portal[oHeroName].width = colwidth * 2
+	  portal[oHeroName].height = 180
+	  
+      portal[oHeroInfo].top = portal[oHeroName].bottom
+      portal[oHeroInfo].left = portal[oHeroName].left
+      portal[oHeroInfo].width = portal[oHeroName].width
+	  portal[oHeroInfo].height = 180
+	  
+      portal[oFlexDieHdr].top = 0
+      portal[oFlexDieHdr].left = portal[oHeroName].right + 20
+      portal[oFlexDieHdr].width = colwidth
+	  portal[oFlexDieHdr].height = 55
+	  
+      portal[oFlexValue].top = portal[oFlexDieHdr].bottom
+      portal[oFlexValue].left = portal[oFlexDieHdr].left
+      portal[oFlexValue].width = portal[oFlexDieHdr].width
+	  portal[oFlexValue].height = 305
+	  
+      portal[oStaminaHdr].top = 0
+      portal[oStaminaHdr].left = portal[oFlexDieHdr].right + 20
+      portal[oStaminaHdr].width = colwidth
+	  portal[oStaminaHdr].height = 55
+	  
+      portal[oStaminaValue].top = portal[oStaminaHdr].bottom
+      portal[oStaminaValue].left = portal[oStaminaHdr].left
+      portal[oStaminaValue].width = portal[oStaminaHdr].width
+	  portal[oStaminaValue].height = 305
+	  
+      ]]></position>
+    </layout>
+	
+  <!-- <layout
+    id="oMid2">
+    <portalref portal="oOriginAbility" />
+    <templateref template="oLifePoints" thing="mscDamage" />
+    <position><![CDATA[
+	  var colwidth as number
+	  colwidth = (width/2) - 10
+	  
+	  template[oLifePoints].top = 0
+	  template[oLifePoints].left = 0
+	  template[oLifePoints].width = colwidth
+	  
+	  portal[oOriginAbility].top = 0
+	  portal[oOriginAbility].left = width - colwidth
+	  portal[oOriginAbility].width = colwidth
+	  
+      ~our layout height is the extent of the elements within
+      height = autoextent
+      ]]></position>
+    </layout> -->
+	
+  <layout
+    id="oMid">
+    <portalref portal="oOriginAbility" />
+    <templateref template="oLifePoints" thing="mscDamage" />
+    <position><![CDATA[
+	  var colwidth as number
+	  colwidth = (width/2) - 10
+	  
+	  autowidth = colwidth
+	  perform template[oLifePoints].autoplace[0]
+	  
+	  autotop = 0
+	  autoleft = width - colwidth
+	  
+	  perform portal[oOriginAbility].autoplace[0]
+	  portal[oOriginAbility].width = colwidth
+	  
+      ~our layout height is the extent of the elements within
+      height = autoextent
+      ]]></position>
+    </layout>
+	
+  <layout
+    id="oMidAttributes">
+    <portalref portal="oAttributeWide"/>
+    <position><![CDATA[
+      perform portal[oAttributeWide].autoplace
+	  
+      ~our layout height is the extent of the elements within
+      height = autoextent
+      ]]></position>
+    </layout>
+
+  <layout
+    id="oMidDefense">
+    <portalref portal="oDefenseWide"/>
+    <position><![CDATA[
+      perform portal[oDefenseWide].autoplace
+	  
+      ~our layout height is the extent of the elements within
+      height = autoextent
+      ]]></position>
+    </layout>
+	
+  <layout
+    id="oRight">
+    <portalref portal="oSkillsCAH"/>
+    <portalref portal="oSkillsSorcCAH"/>
+    <position><![CDATA[
+      perform portal[oSkillsCAH].autoplace
+      perform portal[oSkillsSorcCAH].autoplace
+	  
+      ~our layout height is the extent of the elements within
+      height = autoextent
+      ]]></position>
+    </layout>
+	
+  <layout
+    id="oLeft">
+    <portalref portal="oWeaponsCAH"/>
+    <portalref portal="oArmorCAH"/>
+    <position><![CDATA[
+      perform portal[oWeaponsCAH].autoplace
+      perform portal[oArmorCAH].autoplace[10]
+	  
+      ~our layout height is the extent of the elements within
+      height = autoextent
+      ]]></position>
+    </layout>
+	
+  <!-- conan1 sheet
+        This is the first page of the stanard character sheet, which coordinates the
+        output of a whole bunch of layouts containing different pieces of information
+        for the character. Layouts are estimated to perform whatever calculations are
+        necessary within that layout, such as its overall dimensions. Once estimated,
+        the dimensions of the layout can be used to properly position and size any
+        subsequent layouts that depend on it. So the overall process is to process
+        layouts in an order that progressively fills the sheet with aligned material.
+		
+		
+    <layoutref layout="oLeftSide"/>
+    <layoutref layout="oRightSide"/>
+    <layoutref layout="oAdjust"/>
+    <layoutref layout="oArmory"/>
+	
+    <layoutref layout="oMid"/>
+    <layoutref layout="oRight"/>
+  -->
+  <sheet
+    id="conan1"
+    name="Standard character sheet, page #1">
+    <layoutref layout="oLogos"/>
+    <layoutref layout="oTop"/>
+    <layoutref layout="oMidAttributes"/>
+    <layoutref layout="oMidDefense"/>	
+    <layoutref layout="oMid"/>
+    <layoutref layout="oRight"/>
+    <layoutref layout="oLeft"/>
+    <layoutref layout="oValidate"/>
+    <position><![CDATA[
+      ~set this global variable to 1 if you want the logos to be stacked; a value
+      ~of zero places them side-by-side
+      scenevalue[stacklogos] = 1
+
+      ~setup the gap to be used between the various sections of the character sheet
+      autogap = 40
+      scenevalue[sectiongap] = autogap
+
+      ~calculate the width of the two columns of the character sheet, leaving a
+      ~suitable center gap between them
+      var colwidth as number
+      colwidth = (width - 20) / 4
+
+      ~if the user wants to omit the validation report, the hide it and allow the
+      ~rest of the sheet to fill that space; otherwise, output the layout and the
+      ~top of the validation report establishes the bottom for all other output
+      var extent as number
+      if (hero.tagis[source.Validation] = 0) then
+        layout[oValidate].visible = 0
+        extent = height
+      else
+        layout[oValidate].width = width
+        perform layout[oValidate].render
+        layout[oValidate].top = height - layout[oValidate].height
+        extent = layout[oValidate].top - autogap
+        endif
+
+      ~position the logos layout in the upper left corner
+      layout[oLogos].width = colwidth
+      perform layout[oLogos].render
+      layout[oLogos].left = 0
+	  
+	  ~ position the top 
+	  layout[oTop].width = colwidth * 3
+	  perform layout[oTop].render
+	  layout[oTop].left = layout[oLogos].right + 5
+	  
+	  ~ position the Arrtibutes and Defense ratings
+	  layout[oMidAttributes].width = colwidth * 3
+	  perform layout[oMidAttributes].render
+	  layout[oMidAttributes].left = 0
+	  layout[oMidAttributes].top = layout[oLogos].bottom + 15
+	  
+      layout[oMidDefense].width = colwidth
+	  perform layout[oMidDefense].render
+      layout[oMidDefense].left = layout[oMidAttributes].right
+      layout[oMidDefense].top = layout[oMidAttributes].top
+	  
+	  colwidth = (width/2) - 10
+	  
+	  ~ position the Life Points and Origin Abilities
+      layout[oMid].width = width
+	  perform layout[oMid].render
+      layout[oMid].left = 0
+      layout[oMid].top = layout[oMidAttributes].bottom + 10
+	  
+      layout[oRight].width = colwidth
+	  perform layout[oRight].render
+      layout[oRight].left = width - colwidth
+      layout[oRight].top = layout[oMid].bottom + 10
+	  
+	  layout[oRight].height = extent - layout[oRight].top
+	  
+      layout[oLeft].width = colwidth
+	  perform layout[oLeft].render
+      layout[oLeft].left = layout[oMid].left
+      layout[oLeft].top = layout[oMid].bottom + 10
+	  
+	  layout[oLeft].height = extent - layout[oLeft].top
+      ]]></position>
+    </sheet>
+
+
+  </document>

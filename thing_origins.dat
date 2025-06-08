@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="oriFromHills" name="From The Hills" description="You grew up beyond the frontiers of civilization. Beyond the Border Kingdoms, beyond the perfumed fops calling themselves knights in Aquilonia. You grew up in a land where blood and danger always lay just beyond the nearest hilltop, where the air itself froze in the lungs, where snow made every forward step a struggle. The hills breed hardy people, and you’re the hardiest of them. Since you could lift a sword, you’ve been embroiled in blood feuds and tribal combat. Since you could walk, you’ve negotiated the forests and the hilltops. Since you could talk, your throat has been hoarse with war cries.\n\nYou’re a warrior-born. It’s the only way you’ve managed to survive. Those native to the harsh, unyielding terrain of the north are born with sword in hand. You learned to stab in the cradle, your food withheld from you unless you could claim it like a warrior, and in place of the wooden toys given to most infants, you clutched a wooden shield. Battle is your life. You came of age in the shield wall; you earned your tribe’s respect in the duels fought between rivals in the heart of your village, watched over by the carved stone faces of the gods. War, bloodshed, the clash of blades and the screams of the dying; these make up your life. Blood-hardened, iron-strong, hill-born... this is you. But it’s not all you are. Even as you swarmed over the walls of the civilized outposts of the southern kingdoms, you wanted more. The gray hills of your homeland might have inculcated the skills of the sword, made you granite-tough and tiger-fast in the melee, but where was the joy of battle you felt?\n\nWhere were the sword songs? Where the quaffing of ale, and the celebration of a battle won? No. The hills of the north may have made you, but you wanted more than grim faces and gray skies. So you’ve taken up your sword once more, but now you head out into the broader world, ready to write a legend for yourself, in blood and gold." compset="Origin" uniqueness="unique">
+    <fieldval field="oriSorcText" value="None"/>
+    <fieldval field="oriLifePoints" value="30"/>
+    <fieldval field="oriBonusText" value="At the start of each Tale, choose Might, Edge, or Grit. For the duration of that Tale, apply +1 to all Checks and Attacks related to the chosen Stat."/>
+    <eval phase="Setup" priority="5000"><![CDATA[perform hero.childfound[OriginHelper].setfocus
+
+focus.field[ohAddItemHdr].text = "Attribute Check/Attacks"
+focus.field[ohCandidExpr].text = "component.OriginAbility & (thingid.oabMightChecksAtt|thingid.oabEdgeChecksAtt|thingid.oabGritChecksAtt)"]]></eval>
+    </thing>
+  <thing id="oriFromStreets" name="From The Streets" description="{/b}Bonuses:{/b} +1 to all Edge Checks and Attacks; begin with the Fleet Footed or Of the Shadows Skill.\n{/b}Base Life Points:{/b} 22\n{/b}Sorcery:{/b} None\n\n Every city has one. A place you don’t tread if you aren’t good with a knife and able to pick a pocket so deftly even the pocket doesn’t realize it’s empty. In Zamora, the place is called the Maul. Elsewhere, the Maze. The specifics might differ, but the essence remains the same. Knotted tangles of avenues and passageways. Drinking dens populated by the harshest and cruelest. Hovels where the old wither and the hunted hide. And you were born here. Born in the hidden underside of civilization. Heir only to muck and larceny. It wasn’t an auspicious start, but you don’t care about auspices (indeed, you’re not quite sure what they are; you had a different sort of education to those book-learning brats in the better parts of the city).\n\nIt started with filching things from unwatched windowsills. Just some food, maybe, nothing anyone would miss too much, even in a place as penurious as the Maul. But soon you realized this was the way to make your life count for something. They—those fancy fools in the palaces who pretended not to see you as you scampered through the markets—won’t give you anything. But that was okay; you preferred taking it from them anyway.\n\nIn places like the Maul, or whichever version of it you hail from, you don’t go long as a young thief before you get shown how things work. It’s never just a case of taking what you can. There’s always a bigger rat in the sewer, and soon you were working for the bigger rats, giving them a share of your hauls, and learning as fast as you could. You learned about finding the right mark and how to tell the truly rich from the merely flashy; you learned about the treasures you could take and those you should avoid because they carried the otherworldly touch; and you learned how to cut a throat and drive the knife into the guts of your opponent and leave them to bleed out.\n\nYou learned it all, you learned it well. Now it’s time to take your talents out into the wide world. There are much richer pickings than this city, and you’re going to take them for every penny." compset="Origin" uniqueness="unique">
+    <fieldval field="oriSorcText" value="None"/>
+    <fieldval field="oriLifePoints" value="30"/>
+    <fieldval field="oriBonusText" value="+1 to all Edge Checks and Attacks; begin with the Fleet Footed or Of the Shadows Skill."/>
+    <fieldval field="usrCandid1" value="component.Skill &amp; (thingid.skFleetFoot|thingid.skOfShadows)"/>
+    <fieldval field="usrLabel1" value="Skill"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="User" tag="NoAutoName"/>
+    <bootstrap thing="oabEdgeChecksAtt"></bootstrap>
+    <eval phase="Setup" priority="5000"><![CDATA[perform hero.childfound[OriginHelper].setfocus
+
+focus.field[ohAddItemHdr].text = "Gain Skill"
+focus.field[ohCandidExpr].text = "component.OriginAbility & (thingid.oabSkillOfShadows|thingid.oabSkillFleet)"]]></eval>
+    </thing>
+  <thing id="oriFromCivLand" name="From a Civilized Land" description="The cities of Aquilonia, Nemedia, Corinthia, and Stygia are many things. Decadent, perhaps. But not safe. Never safe. So, when you hear the claims of your homeland being soft, effete, or incapable of preparing a person for the dangers of a life exploring the darkest corners of the Thurian continent, it’s almost enough to laugh. It’s true, you’ll admit, that civilized people do not have their heads split in two by a sword as a regular thing. Civilized people tend to be poisoned, or garrotted in their beds. Or have their heads removed by the executioner as a result of the political machinations of various rivals. It’s a quieter form of slaughter, perhaps, but no less effective.\n\nYou grew up amongst this, learned to navigate politics and intrigue, sometimes delivered at the point of a knife. Perhaps you were the child of a minor aristocrat, raised to fulfill some function in court. Perhaps you were born into a merchant family, given some education as a result of your parent’s wealth. Maybe you were a servant in the house of a noble, made to study with the children of your master.\n\nWhatever your past, it left you with some skill in scheming and stabbing, and enough education to read, to write, to think... and it left you with so many questions. Questions people didn’t want to answer. About the past, perhaps. Or about things you weren’t meant to talk about. Like the demons in those stories you were told. Were they real? You know you weren’t meant to ask those questions; you could see their faces went still when you spoke. Being smart enough to stop asking didn’t mean you stopped wanting the answers. And now you’re old enough to venture into the world and find them for yourself. There are so many mysteries in the world, so many ancient and forgotten places, so much waiting to be rediscovered. And you’re the one to do so. You’ve spent hours in the libraries of the great palaces, masquerading as a curator. You’ve examined the maps of long-dead scholars, hunting for the lost temples of the wise. Now you’re ready. Ready to discover the truth of this world. And if you need to get your hands bloody to do so... so be it." compset="Origin" uniqueness="unique">
+    <fieldval field="oriSorcText" value="You may buy Sorcery Skills from the Alchemy discipline."/>
+    <fieldval field="oriLifePoints" value="22"/>
+    <fieldval field="oriBonusText" value="+1 to all Wits Checks; begin with the Uncanny Warding skill."/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="SorceryAllowed" tag="sorAlchemy"/>
+    <bootstrap thing="oabWitsChecks"></bootstrap>
+    <bootstrap thing="oabSkillUncanWard"></bootstrap>
+    </thing>
+  <thing id="oriBloodAcheron" name="From the Blood of Acheron" compset="Origin" uniqueness="unique">
+    <fieldval field="oriBonusText" value="+1 to all Wits Checks. Spend 1 Stamina Point: Reduce the cost in Life Points to cast a spell by half (rounding up)."/>
+    <fieldval field="oriLifePoints" value="20"/>
+    <fieldval field="oriSorcText" value="You may buy Sorcery Skills from any/all Sorcery Disciplines. "/>
+    <tag group="SorceryAllowed" tag="sorNecroMagic"/>
+    <tag group="SorceryAllowed" tag="sorWhiteMagic"/>
+    <tag group="SorceryAllowed" tag="sorAlchemy"/>
+    <tag group="SorceryAllowed" tag="sorBlackMagic"/>
+    <tag group="SorceryAllowed" tag="sorDemonMagic"/>
+    <bootstrap thing="oabWitsChecks"></bootstrap>
+    <bootstrap thing="oabRedSpellStaLif"></bootstrap>
+    </thing>
+  </document>

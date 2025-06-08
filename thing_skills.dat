@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="skBornSaddle" name="Born In the Saddle" description="Ignore the usual penalty for making a Ranged Attack while Mounted; instead, apply +1 to Attacks when Mounted and targeting an un-Mounted foe." compset="Skill" uniqueness="unique">
+    <fieldval field="abilAbbrev" value="BitS"/>
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skFleetFoot" name="Fleet Footed" description="When making 2 Move Actions in the same Turn, take an additional bonus Move Action." compset="Skill" uniqueness="unique">
+    <fieldval field="abilAbbrev" value="FleetF"/>
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skOfShadows" name="Of the Shadows" description="+1 to all Edge Checks involving stealth (hiding, moving quietly, passing by unseen) or to detect others." compset="Skill" uniqueness="unique">
+    <fieldval field="abilAbbrev" value="OfShad"/>
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skCharge" name="Charge" description="Spend 1 Stamina Point: Make two Move Actions, followed by a Melee Attack Action. This only counts as 1 Action." compset="Skill" uniqueness="unique">
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skAssassin" name="Assassin" description="When using a One-Handed Light or Medium Melee weapon, apply Edge to the Melee Attack instead of Might. Still add Might to the Damage Roll" compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <fieldval field="abilAbbrev" value="Asn"/>
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skImpFlex" name="Improved Flex" description="Improve Flex die from D10 to D8." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="3"/>
+    <fieldval field="abilAbbrev" value="ImpFlx"/>
+    <tag group="SkillCat" tag="Starting"/>
+    <eval phase="Effects" priority="1000">hero.childfound[trFlexDie].field[trtDieValue].value -= 1</eval>
+    </thing>
+  <thing id="skDefender" name="Defender" description="Choose a Friendly Character within Touch Range. Become the target of a single Attack made against the chosen Friendly Character.\n\nMay only be used once per Round" compset="Skill" summary="Once per round, Choose a Friendly Character within Touch Range. Become the target of a single Attack made against the chosen Friendly Character." uniqueness="unique">
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skHitRun" name="Hit and Run" description="Spend 1 Stamina Point: Make an Attack Action, followed by two Move Actions.\n\nThis only counts as 1 Action." compset="Skill" uniqueness="unique">
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skIronHide" name="Iron Hide" description="Increase maximum Life Points by 3." compset="Skill" uniqueness="unique">
+    <tag group="SkillCat" tag="Starting"/>
+    <eval phase="Effects" priority="2000">#traitbonus[trLifePoints] += 3</eval>
+    </thing>
+  <thing id="skUncannyWarding" name="Uncanny Warding" description="Increase Sorcery Defense by 1." compset="Skill" uniqueness="unique">
+    <eval phase="Effects" priority="2000">#traitbonus[trSorcDefense] += 1</eval>
+    </thing>
+  <thing id="skBrawler" name="Brawler" description="Increase the Damage of all Melee Attacks by +1" compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <fieldval field="abilAbbrev" value="Brawl"/>
+    <tag group="SkillCat" tag="Starting"/>
+    <eval phase="Effects" priority="2000">herofield[acMeleeDamage].value += 1</eval>
+    </thing>
+  <thing id="skEagleEyed" name="Eagle-Eyed" description="Increase the Damage of all Ranged Attacks by +1" compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <fieldval field="abilAbbrev" value="E-Eyed"/>
+    <tag group="SkillCat" tag="Starting"/>
+    <eval phase="Effects" priority="2000">herofield[acRangedDamage].value += 1</eval>
+    </thing>
+  <thing id="skPantherish" name="Pantherish" description="Spend 1 Stamina Point: Reroll a failed Check or Attack roll." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skResilient" name="Resilient" description="During a Recovery, regain 3 additional Life Points and gain 1 additional Stamina Point." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skWaterfrontFists" name="Waterfront Fists" description="While unarmed, Melee Attacks count as Improvised Weapons (Light, One-Handed)." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skLotusFlash" name="Lotus Flash" description="{b}Spend 1 Stamina Point:{/b} Use 1 Action to cause a blinding flash. All Enemy Characters within Medium Range reduce their Initiative to 1 until the end of their next Turn. This spell can also be used to illuminate a large area for a brief momen" compset="Skill" uniqueness="unique">
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <bootstrap thing="sorAlchemy"></bootstrap>
+    </thing>
+  <thing id="skBodyLivingIron" name="Body of Living Iron" description="{b}Spend 1 Stamina Point:{/b} Use a Free Action to create natural armor. The sorcerer increases their AR by 3 until the end of the current combat. \n\nThis spell may only be cast once per combat." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="sorAlchemy"></bootstrap>
+    </thing>
+  <thing id="skHDRStarting" name="~~ Starting Skills ~~" compset="Skill" uniqueness="unique" isshowonly="yes">
+    <tag group="SkillCat" tag="Starting"/>
+    </thing>
+  <thing id="skHDRSorcery" name="~~ Sorcery Skills ~~" compset="Skill" uniqueness="unique" isshowonly="yes">
+    <tag group="SkillCat" tag="Sorcery"/>
+    </thing>
+  <thing id="skSnakeArrow" name="Snake Arrow" description="{b}Spend 3 Life Points:{/b} Use 1 Action to make a snake arrow. The next Ranged Attack made by the sorcerer during this combat inflicts an additional 1D6 Damage and causes the target to become Poisoned." compset="Skill" uniqueness="unique">
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="Sorcery" tag="sorBlackMagic"/>
+    </thing>
+  <thing id="skHDRSorAlchemy" name="~~ Alchemy ~~" compset="Skill" uniqueness="unique" isshowonly="yes">
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    </thing>
+  <thing id="skSorBlackMagic" name="~~ Black Magic ~~" compset="Skill" uniqueness="unique" isshowonly="yes">
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="Sorcery" tag="sorBlackMagic"/>
+    </thing>
+  <thing id="skHDRAdvanced" name="~~ Advanced Skills ~~" compset="Skill" uniqueness="unique" isshowonly="yes">
+    <usesource source="AdvancedSkills"/>
+    <tag group="SkillCat" tag="Advanced"/>
+    </thing>
+  <thing id="skAmbidextrous" name="Ambidextrous" description="Wjem using the Dual-Wielder Fighting Style, the Character may wield a One-Handed Heavy weapon {b}and{/b} a One-Handed Light or Medium weapon, rather than having to wield two One-Handed Light or Medium weapons." compset="Skill" summary="Wjem using the Dual-Wielder Fighting Style, the Character may wield a One-Handed Heavy weapon {b}and{/b} a One-Handed Light or Medium weapon." uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <tag group="SkillCat" tag="Advanced"/>
+    </thing>
+  <thing id="skCombatReadiness" name="Combat Readiness" description="+1 to all Initiative rolls." compset="Skill" uniqueness="unique">
+    <tag group="SkillCat" tag="Legendary"/>
+    </thing>
+  <thing id="skALCCreateFood" name="Create Food" description="The sorcerer may create food from otherwise inedible items, such as non-edible plants, dirt, or even stone. Food created in this way does not possess the nutritional content of natural food but provides suitable sustenance." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="0"/>
+    <tag group="SkillType" tag="Inherent"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    </thing>
+  <thing id="skALCRadiumGem" name="Radium Gem" description="The sorcerer is able to turn any gemstone into a bright light source by placing a hand upon it. The gem will act as a torch for as long as the sorcerer holds it." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="0"/>
+    <tag group="SkillType" tag="Inherent"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    </thing>
+  <thing id="skALCArtifactSpi" name="Artifact Spirit" description="The sorcerer is able to determine the origin of any physical item they can place a hand upon. This will provide insight as to how old the item is, where the item was made, and by whom it was made." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="0"/>
+    <tag group="SkillType" tag="Inherent"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    </thing>
+  <thing id="skALCCraftSeal" name="Craft Seal" description="{b}Spend 1 Stamina Point:{/b} Use 1 Action to lock or unlock a lock or door. Alternatively spend 2 Actions to place or remove a magical seal upon a lock or door" compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="2"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="sorAlchemy"></bootstrap>
+    </thing>
+  <thing id="skALCTideStone" name="Tide of Stone" description="{b}Spend 1 Stamina Point:{/b} Use 1 Action to make a Sorcery Attack, Medium Range, 1D8+2 Damage. If the target of this Attack suffers any Damage, their Physical Defense is reduced by 1 until the end of the current combat." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="3"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="sorAlchemy"></bootstrap>
+    </thing>
+  <thing id="skALCCreateBane" name="Create Bane Weapon" description="{b}Spend 4/6/8 Life Points:{/b} Use 1 Action to target a weapon within Touch Range. The target weapon increases its Damage by 1D6/1D8/1D10 and any successful Attack with that weapon will knock its target Prone. The effects of this spell last until the start of the sorcerer’s next Turn.\n\nDURATION: 3 Life Points and 1 Action" compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="4"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="sorAlchemy"></bootstrap>
+    </thing>
+  <thing id="skALCAniLivingSta" name="Animate Living Statue" description="{b}Spend 1 Stamina Point + 10 Life Points:{/b} Use 2 Actions to animate a Living Statue: Stone within Medium Range, which acts as a Friendly Character until it is defeated or the current combat ends, at which point it will revert to an inanimate statue. The Living Statue shares the same Initiative as the sorcerer. The Living Statue may take a Turn immediately after the Sorcerer on the Turn it is summoned. \n\nThis spell requires a statue/carving up to 3 times the sorcerer’s height to be in Range." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="5"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="sorAlchemy"></bootstrap>
+    </thing>
+  <thing id="skALCLotusMiasma" name="Lotus Miasma" description="{b}Spend 1 Stamina Point:{/b} Use 2 Actions to make a Sorcery Attack, Range Close, Damage is equal to the sorcerer’s Wits die +3. This Attack hits all non-Undead Characters (including allied Characters) in Range. Damage from this Attack ignores the target’s AR. A target that suffers 5 or more Damage from this Attack becomes Poisoned.\n\nDURATION: 1 Life Point + 2 Actions (anyone within Range will take Damage each time the sorcerer maintains this spell)." compset="Skill" uniqueness="unique">
+    <fieldval field="sklXPCost" value="6"/>
+    <tag group="Sorcery" tag="sorAlchemy"/>
+    <tag group="SkillCat" tag="Sorcery"/>
+    <tag group="User" tag="Activation"/>
+    <bootstrap thing="sorAlchemy"></bootstrap>
+    </thing>
+  </document>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- This file contains the definition of the "Skills" tab panel. This tab is where
+      the user selects and adjusts the skills for the character.
+
+      All public visual elements used with this tab panel start with the prefix "sk"
+      to associate them with the tab.
+-->
+
+<document signature="Hero Lab Data">
+	
+  <template
+    id="oriOriginTemp"
+    name="Origin Template"
+    compset="Origin"
+    marginhorz="3"
+    marginvert="2">
+
+    <portal
+      id="oriOriginTitle"
+      style="lblTitle">
+      <label>
+        <labeltext><![CDATA[
+          @text = "Description"
+          ]]></labeltext>
+        </label>
+      </portal>
+      
+    <portal
+      id="oriOriginDesc"
+      style="lblBrdLeft">
+      <label
+        field="oriSummary"
+        ismultiline="yes"
+        scrollable="yes">
+        </label>
+      </portal>
+                
+    <position><![CDATA[
+      ~set up our dimensions, with a width that we dictate; our width can vary
+     
+      portal[oriOriginTitle].height = 20
+
+      ~position the description on the left and let it use all available space
+      portal[oriOriginTitle].top = 0
+      portal[oriOriginTitle].left = 0
+      portal[oriOriginTitle].width = width
+      
+      portal[oriOriginDesc].top = portal[oriOriginTitle].bottom + 5
+      portal[oriOriginDesc].left = 0
+      portal[oriOriginDesc].width = width
+      portal[oriOriginDesc].height = height
+
+      ]]></position>
+
+    </template>
+	
+  <template
+    id="oriOriginChoices"
+    name="Origin Choices Template"
+    compset="OriginAbility"
+    marginhorz="3"
+    marginvert="2">
+
+	<portal 
+	  id="oriSelectHdr" 
+	  style="lblTitle">
+	  <label>
+		<labeltext><![CDATA[
+		  @text = "Selection"
+		  ]]></labeltext>
+		</label>
+      </portal>
+	  
+	<portal
+	  id="oriSelection"
+	  style="chsNormal"
+	  width="110">
+	  <chooser_table
+		component="none"
+		choosetemplate="SimpleItem"
+		candidatepick="OriginHelper"
+		candidatefield="ohCandidExpr">
+		<chosen><![CDATA[
+		  if (@ispick = 0) then
+		    @text = "{text clrwarning}" & hero.childfound[OriginHelper].field[ohAddItemHdr].text
+		  else
+			@text = field[name].text
+			endif
+		  ]]></chosen>
+		<titlebar><![CDATA[
+		  @text = "Select " & hero.childfound[OriginHelper].field[ohAddItemHdr].text
+		  ]]></titlebar>
+		</chooser_table>
+	  </portal>
+	  
+    <position><![CDATA[
+	  ~ Place Focus header then chooser
+      portal[oriSelectHdr].top = 0
+      portal[oriSelectHdr].left = 0
+      portal[oriSelectHdr].height = 20
+      portal[oriSelectHdr].width = (width/2) - 5
+      
+      portal[oriSelection].top = portal[oriSelectHdr].bottom + 5
+      portal[oriSelection].left = portal[oriSelectHdr].left
+      portal[oriSelection].height = 20
+      portal[oriSelection].width = portal[oriSelectHdr].width
+	  
+      ]]></position>
+
+    </template>	
+	
+  <!-- origin layout
+        This layout orchestrates the display of the visual elements that comprise
+        the Skills tab. This amounts to a title at the top and a dynamic table below
+        where the user can add and adjust the skills he wants.
+
+        The logic for this layout is similar to (albeit much simpler than) the
+        logic for the Basics tab. So please refer to the Basics tab for more details.
+  -->
+  <layout
+    id="origin">
+    <templateref template="oriOriginTemp" useagent="yes"/>
+    <templateref template="oriOriginChoices" useagent="yes"/>
+    <!-- This script sizes and positions the layout and its child visual elements. -->
+    <position><![CDATA[
+      ~both tables span the full width
+      template[oriOriginTemp].width = width
+	  template[oriOriginTemp].height = (height/3) * 2
+      template[oriOriginTemp].visible = 1
+	  
+	  template[oriOriginChoices].top = template[oriOriginTemp].bottom + 30
+	  template[oriOriginChoices].left = template[oriOriginTemp].left
+      template[oriOriginChoices].width = width
+	  template[oriOriginChoices].height = height
+      template[oriOriginChoices].visible = 1
+
+      ]]></position>
+
+    </layout>
+
+  <!-- Origin panel  -->
+  <panel
+    id="origin"
+    name="Origin"
+    marginhorz="5"
+    marginvert="5"
+    order="110"
+    agentcompset="Origin"
+    agentlive="Origin"
+    agentname="name"
+    >
+    <live>!HideTab.origin</live>
+    <layoutref layout="origin"/>
+    <position><![CDATA[
+      ]]></position>
+    </panel>
+
+
+  </document>

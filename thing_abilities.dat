@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="oabChecksAttacks1" name="+1 to Chosen Checks and Attacks" description="..." compset="OriginAbility" uniqueness="unique"></thing>
+  <thing id="oabEdgeChecksAtt" name="+1 to Edge Checks and Attacks" description="+1 to Edge Checks and Attacks" compset="OriginAbility" uniqueness="unique"></thing>
+  <thing id="oabSkillFleet" name="Fleet Footed" description="Begin wIth the Fleet Footed skill." compset="OriginAbility" uniqueness="unique">
+    <bootstrap thing="skFleetFoot"></bootstrap>
+    </thing>
+  <thing id="oabSkillOfShadows" name="Of The Shadows" description="Begin wIth the Of The Shadows skill." compset="OriginAbility" uniqueness="unique">
+    <bootstrap thing="skOfShadows"></bootstrap>
+    </thing>
+  <thing id="oabWitsChecks" name="+1 to Wits Checks" description="+1 to Wits Checks" compset="OriginAbility" uniqueness="unique"></thing>
+  <thing id="oabRedSpellStaLif" name="Reduced Spell Cost (1 Stamina, Life Points cost halved)" description="{b}Spend 1 Stamina Point:{/b} Reduce the cost in Life Points to cast a spell by half (rounding up)." compset="OriginAbility" uniqueness="unique"></thing>
+  <thing id="oabMightChecksAtt" name="+1 to Might Checks and Attacks" description="+1 to Might Checks and Attacks" compset="OriginAbility" uniqueness="unique"></thing>
+  <thing id="oabGritChecksAtt" name="+1 to Grit Checks and Attacks" description="+1 to Grit Checks and Attacks" compset="OriginAbility" uniqueness="unique"></thing>
+  <thing id="oabSkillUncanWard" name="Uncanny Warding" description="Begin wIth the Uncanny Warding skill." compset="OriginAbility" uniqueness="unique">
+    <bootstrap thing="skUncannyWarding"></bootstrap>
+    </thing>
+  </document>
